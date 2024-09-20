@@ -1,5 +1,5 @@
 # GAME
 ## Rock Paper Scissor
  *instractions*
- *1 open game
- *2 play
+ * number 1 open game
+ * number 2 play
