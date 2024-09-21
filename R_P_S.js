@@ -1,4 +1,17 @@
- // // selecting buttons
+//local storag
+ scors=JSON.parse(localStorage.getItem("Game"))||{wins:0 ,loses:0, draws:0}
+
+
+
+ //button 
+resetButton= document.querySelector(".js-clear")
+ resetButton.addEventListener("click",()=>{
+   localStorage.removeItem("Game");
+   window.location.reload(true)
+ })
+
+// selecting buttons
+
 document.querySelector(".js-button-rock").addEventListener("click", () => {
   document.querySelector(".js-playerimage").src = "img/rock-emoji.png";
   play("Rock");
@@ -31,7 +44,7 @@ function computerMove() {
   }
   return computermove;
 }
-scors=JSON.parse(localStorage.getItem("Game"))||{wins:0 ,loses:0, draws:0}
+
 
 
 function play(playerMove) {
@@ -91,9 +104,7 @@ localStorage.setItem("Game",JSON.stringify(scors))
     winner ="its a draw"
   }
 
-  document.querySelector(
-    ".js-text"
-  ).innerHTML = `Wins: ${scors.wins} Loses: ${scors.loses} Draws: ${scors.draws}`;
+  document.querySelector( ".js-text").innerHTML = `Wins: ${scors.wins} Loses: ${scors.loses} Draws: ${scors.draws}`;
 
   document.querySelector(".js-games-played").innerHTML = `Games Played: ${
     scors.wins + scors.loses + scors.draws
