@@ -1,17 +1,19 @@
 //local storag
- scors=JSON.parse(localStorage.getItem("Game"))||{wins:0 ,loses:0, draws:0}
+scors = JSON.parse(localStorage.getItem("Game")) || { wins: 0, loses: 0, draws: 0 }
+
+//button 
+resetButton = document.querySelector(".js-clear")
+resetButton.addEventListener("click", () => {
+  document.querySelector(".inDiv").classList.add("noDisplay")
+   document.querySelector(".js-ResetDiv").classList.remove("noDisplay")
 
 
-
- //button 
-resetButton= document.querySelector(".js-clear")
- resetButton.addEventListener("click",()=>{
-   localStorage.removeItem("Game");
-   window.location.reload(true)
- })
+//   localStorage.removeItem("Game");
+    
+//   window.location.reload(true)
+})
 
 // selecting buttons
-
 document.querySelector(".js-button-rock").addEventListener("click", () => {
   document.querySelector(".js-playerimage").src = "img/rock-emoji.png";
   play("Rock");
@@ -44,8 +46,6 @@ function computerMove() {
   }
   return computermove;
 }
-
-
 
 function play(playerMove) {
   const computermove = computerMove();
@@ -86,27 +86,26 @@ function play(playerMove) {
     }
   }
 
-  if (result === "You win") scors.wins  += 1;
+  if (result === "You win") scors.wins += 1;
   else if (result === "You lose") scors.loses += 1;
   else if (result === "You draw") scors.draws += 1;
-// 
+   
+  localStorage.setItem("Game", JSON.stringify(scors))
+  winner = ""
 
-localStorage.setItem("Game",JSON.stringify(scors))
-  winner=""
-
-  if(scors.wins>scors.loses){
-    winner="you win"
+  if (scors.wins > scors.loses) {
+    winner = "you win"
   }
-  else if(scors.loses> scors.wins){
-    winner="Computer wins"
+  else if (scors.loses > scors.wins) {
+    winner = "Computer wins"
   }
-  else if(scors.wins === scors.loses){
-    winner ="its a draw"
+  else if (scors.wins === scors.loses) {
+    winner = "its a draw"
   }
 
-  document.querySelector( ".js-text").innerHTML = `Wins: ${scors.wins} Loses: ${scors.loses} Draws: ${scors.draws}`;
+  document.querySelector(".js-text").innerHTML = `Wins: ${scors.wins} Loses: ${scors.loses} Draws: ${scors.draws}`;
 
-  document.querySelector(".js-games-played").innerHTML = `Games Played: ${
-    scors.wins + scors.loses + scors.draws
-  }  <br> overall winner   :${winner} `;
+  document.querySelector(".js-games-played").innerHTML = `Games Played: ${scors.wins + scors.loses + scors.draws
+    }  <br> overall winner   :${winner} `;
 }
+ 
