@@ -7,6 +7,21 @@ resetButton.addEventListener("click", () => {
   document.querySelector(".inDiv").classList.add("noDisplay")
    document.querySelector(".js-ResetDiv").classList.remove("noDisplay")
 
+   document.querySelector(".no").addEventListener("click",()=>{
+    document.querySelector(".inDiv").classList.remove("noDisplay")
+    document.querySelector(".js-ResetDiv").classList.add("noDisplay")
+   
+
+   })
+
+   document.querySelector(".yes").addEventListener("click",()=>{
+    localStorage.removeItem("Game")
+   
+   location.reload();
+
+
+   })
+
 
 //   localStorage.removeItem("Game");
     
